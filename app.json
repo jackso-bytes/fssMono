@@ -1,0 +1,15 @@
+{
+  "expo": {
+    "extra": {
+      "eas": {
+        "projectId": "d03d1401-2a5b-4ff7-8e2f-038bd3a0000e"
+      }
+    },
+    "android": {
+      "package": "com.fss"
+    },
+    "ios": {
+      "bundleIdentifier": "com.fss"
+    }
+  }
+}
