@@ -29,14 +29,14 @@ export function BarCodeScanner() {
   }
 
   return (
-    <View className="flex flex-row rounded-lg bg-muted p-4">
+    <View className="flex flex-row justify-center rounded-lg bg-muted p-8">
       <CameraView className="flex-1" facing={facing}>
-        <View className="m-64 flex-1 flex-row bg-transparent">
+        <View className="m-44 flex-1 flex-row bg-transparent ">
           <TouchableOpacity
-            className="flex-1 items-center self-end"
+            className="flex-1 items-center self-center"
             onPress={toggleCameraFacing}
           >
-            <Text className="size-24 stroke-white font-bold">Flip Camera</Text>
+            <Text className="size-24 font-bold text-white">Flip Camera</Text>
           </TouchableOpacity>
         </View>
       </CameraView>

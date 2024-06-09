@@ -13,6 +13,9 @@ export default function Index() {
         <Text className="pb-2 text-center text-5xl font-bold text-foreground">
           Fresh <Text className="text-primary">Seasonal</Text> Sustainable
         </Text>
+        <Text className="text-8 px-2 pb-2 pt-8">
+          Scan a barcode to get a CO2 estimate for that food
+        </Text>
         <BarCodeScanner />
       </View>
     </SafeAreaView>
