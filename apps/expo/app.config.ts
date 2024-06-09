@@ -38,5 +38,15 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     tsconfigPaths: true,
     typedRoutes: true,
   },
-  plugins: ["expo-router"],
+  plugins: [
+    "expo-router",
+    [
+      "expo-camera",
+      {
+        cameraPermission: `Allow ${process.env.CUSTOMER_FACCING_PRODUCT_NAME} to access your camera`,
+        microphonePermission: `Allow ${process.env.CUSTOMER_FACCING_PRODUCT_NAME} to access your microphone`,
+        recordAudioAndroid: true,
+      },
+    ],
+  ],
 });
