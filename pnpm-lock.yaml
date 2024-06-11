@@ -87,6 +87,9 @@ importers:
       expo:
         specifier: ~51.0.2
         version: 51.0.2(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(bufferutil@4.0.8)
+      expo-camera:
+        specifier: ~15.0.10
+        version: 15.0.10(expo@51.0.2(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(bufferutil@4.0.8))
       expo-constants:
         specifier: ~16.0.1
         version: 16.0.1(expo@51.0.2(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(bufferutil@4.0.8))
@@ -513,7 +516,7 @@ importers:
         version: 7.34.1(eslint@9.2.0)
       eslint-plugin-react-hooks:
         specifier: beta
-        version: 5.1.0-beta-04b058868c-20240508(eslint@9.2.0)
+        version: 5.1.0-beta-26f2496093-20240514(eslint@9.2.0)
       typescript-eslint:
         specifier: ^7.8.0
         version: 7.8.0(eslint@9.2.0)(typescript@5.4.5)
@@ -3301,6 +3304,7 @@ packages:
   are-we-there-yet@2.0.0:
     resolution: {integrity: sha512-Ci/qENmwHnsYo9xKIcUJN5LeDKdJ6R1Z1j9V/J5wyq8nh/mYPEpIKJbBZXtZjG04HiK7zV/p6Vs9952MrMeUIw==}
     engines: {node: '>=10'}
+    deprecated: This package is no longer supported.
 
   arg@4.1.3:
     resolution: {integrity: sha512-58S9QDqG0Xx27YwPSt9fJxivjYl432YCwfDMfZ+71RAqUrZef7LrKQZ3LHLOwCS4FLNBplP533Zx895SeOCHvA==}
@@ -4379,8 +4383,8 @@ packages:
     peerDependencies:
       eslint: ^3 || ^4 || ^5 || ^6 || ^7 || ^8
 
-  eslint-plugin-react-hooks@5.1.0-beta-04b058868c-20240508:
-    resolution: {integrity: sha512-5SjQe94ffH/jLSXhjE076pGNfM0O5oDVYFvisPfGuC/Lez2E/mpEzKEMESK//yuQGNtSsPgA/7WyQu+qO7bYSA==}
+  eslint-plugin-react-hooks@5.1.0-beta-26f2496093-20240514:
+    resolution: {integrity: sha512-nCZD93/KYY5hNAWGhfvvrEXvLFIXJCMu2St7ciHeiWUp/lnS2RVgWawp2kNQamr9Y23C9lUA03TmDRNgbm05vg==}
     engines: {node: '>=10'}
     peerDependencies:
       eslint: ^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0-0 || ^9.0.0
@@ -4480,6 +4484,11 @@ packages:
 
   expo-asset@10.0.6:
     resolution: {integrity: sha512-waP73/ccn/HZNNcGM4/s3X3icKjSSbEQ9mwc6tX34oYNg+XE5WdwOuZ9wgVVFrU7wZMitq22lQXd2/O0db8bxg==}
+    peerDependencies:
+      expo: '*'
+
+  expo-camera@15.0.10:
+    resolution: {integrity: sha512-cr0s8CHllPSf3bpT+2/D7nJx41Hec1HzSwYeeIZIe63uFUBRSx6R/eAtdrLOfg6cMoLhmh4wfHXBBnJdT015Fw==}
     peerDependencies:
       expo: '*'
 
@@ -4750,6 +4759,7 @@ packages:
   gauge@3.0.2:
     resolution: {integrity: sha512-+5J6MS/5XksCuXq++uFRsnUd7Ovu1XenbeuIuNRJxYWjgQbPuFhT14lAvsWfqfAmnwluf1OwMjz39HjfLPci0Q==}
     engines: {node: '>=10'}
+    deprecated: This package is no longer supported.
 
   geist@1.3.0:
     resolution: {integrity: sha512-IoGBfcqVEYB4bEwsfHd35jF4+X9LHRPYZymHL4YOltHSs9LJa24DYs1Z7rEMQ/lsEvaAIc61Y9aUxgcJaQ8lrg==}
@@ -4828,16 +4838,20 @@ packages:
 
   glob@6.0.4:
     resolution: {integrity: sha512-MKZeRNyYZAVVVG1oZeLaWie1uweH40m9AZwIwxyPbTSX4hHrVYSzLg0Ro5Z5R7XKkIX+Cc6oD1rqeDJnwsB8/A==}
+    deprecated: Glob versions prior to v9 are no longer supported
 
   glob@7.1.6:
     resolution: {integrity: sha512-LwaxwyZ72Lk7vZINtNNrywX0ZuLyStrdDtabefZKAY5ZGJhVtgdznluResxNmPitE0SAO+O26sWTHeKSI2wMBA==}
+    deprecated: Glob versions prior to v9 are no longer supported
 
   glob@7.2.3:
     resolution: {integrity: sha512-nFR0zLpU2YCaRxwoCJvL6UvCH2JFyFVIvwTLsIf21AuHlMskA1hhTdk+LlYJtOlYt9v6dvszD2BGRqBL+iQK9Q==}
+    deprecated: Glob versions prior to v9 are no longer supported
 
   glob@8.1.0:
     resolution: {integrity: sha512-r8hpEjiQEYlF2QU0df3dS+nxxSIreXQS1qRhMJM0Q5NDdR386C7jb7Hwwod8Fgiuex+k0GFjgft18yvxm5XoCQ==}
     engines: {node: '>=12'}
+    deprecated: Glob versions prior to v9 are no longer supported
 
   globals@11.12.0:
     resolution: {integrity: sha512-WOBp/EEGUiIsJSp7wcv/y6MO+lV9UoncWqxuFfm8eBwzWNgyfBd6Gz+IeKQ9jCmyhoH99g15M3T+QaVHFjizVA==}
@@ -5038,6 +5052,7 @@ packages:
 
   inflight@1.0.6:
     resolution: {integrity: sha512-k92I/b08q4wvFscXCLvqfsHCrjrF7yiXsQuIVvVE7N82W3+aqpzuUdBbfhWcy/FZR3/4IgflMgKLOsvPDrGCJA==}
+    deprecated: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
 
   inherits@2.0.4:
     resolution: {integrity: sha512-k/vGaX4/Yla3WzyMCvTQOXYeIHvqOKtnqBduzTHpzpQZzAskKMhZ2K+EnBiSM9zGSoIFeMpXKxa4dYeZIQqewQ==}
@@ -6137,6 +6152,7 @@ packages:
 
   npmlog@5.0.1:
     resolution: {integrity: sha512-AqZtDUWOMKs1G/8lwylVjrdYgqA4d9nu8hc+0gzRxlDb1I10+FHBGMXs6aiQHFdCUUlqH99MUMuLfzWDNDtfxw==}
+    deprecated: This package is no longer supported.
 
   nullthrows@1.1.1:
     resolution: {integrity: sha512-2vPPEi+Z7WqML2jZYddDIfy5Dqb0r2fze2zTxNNknZaFpVHU3mFB3R+DWeJWGVx0ecvttSGlJTI+WG+8Z4cDWw==}
@@ -6267,6 +6283,7 @@ packages:
 
   osenv@0.1.5:
     resolution: {integrity: sha512-0CWcCECdMVc2Rw3U5w9ZjqX6ga6ubk1xDVKxtBQPK7wis/0F2r9T6k4ydGYhecl7YUBxBVxhL5oisPsNxAPe2g==}
+    deprecated: This package is no longer supported.
 
   p-finally@1.0.0:
     resolution: {integrity: sha512-LICb2p9CB7FS+0eR1oqWnHhp0FljGLZCWBE9aix0Uye9W8LTQPwMTYVGWQWIw9RdQiDg4+epXQODwIYJtSJaow==}
@@ -6975,18 +6992,22 @@ packages:
 
   rimraf@2.4.5:
     resolution: {integrity: sha512-J5xnxTyqaiw06JjMftq7L9ouA448dw/E7dKghkP9WpKNuwmARNNg+Gk8/u5ryb9N/Yo2+z3MCwuqFK/+qPOPfQ==}
+    deprecated: Rimraf versions prior to v4 are no longer supported
     hasBin: true
 
   rimraf@2.6.3:
     resolution: {integrity: sha512-mwqeW5XsA2qAejG46gYdENaxXjx9onRNCfn7L0duuP4hCuTIi/QO7PDK07KJfp1d+izWPrzEJDcSqBa0OZQriA==}
+    deprecated: Rimraf versions prior to v4 are no longer supported
     hasBin: true
 
   rimraf@2.7.1:
     resolution: {integrity: sha512-uWjbaKIK3T1OSVptzX7Nl6PvQ3qAGtKEtVRjRuazjfL3Bx5eI409VZSqgND+4UNnmzLVdPj9FqFJNPqBZFve4w==}
+    deprecated: Rimraf versions prior to v4 are no longer supported
     hasBin: true
 
   rimraf@3.0.2:
     resolution: {integrity: sha512-JZkJMZkAGFFPP2YqXZXPbMlMBgsxzE8ILs4lMIX/2o0L9UBw9O/Y3o6wFw/i9YLapcUJWwqbi3kdxIPdC62TIA==}
+    deprecated: Rimraf versions prior to v4 are no longer supported
     hasBin: true
 
   rollup-plugin-visualizer@5.12.0:
@@ -12483,7 +12504,7 @@ snapshots:
       object.entries: 1.1.8
       object.fromentries: 2.0.8
 
-  eslint-plugin-react-hooks@5.1.0-beta-04b058868c-20240508(eslint@9.2.0):
+  eslint-plugin-react-hooks@5.1.0-beta-26f2496093-20240514(eslint@9.2.0):
     dependencies:
       eslint: 9.2.0
 
@@ -12651,6 +12672,11 @@ snapshots:
       md5-file: 3.2.3
     transitivePeerDependencies:
       - supports-color
+
+  expo-camera@15.0.10(expo@51.0.2(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(bufferutil@4.0.8)):
+    dependencies:
+      expo: 51.0.2(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(bufferutil@4.0.8)
+      invariant: 2.2.4
 
   expo-constants@16.0.1(expo@51.0.2(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(bufferutil@4.0.8)):
     dependencies:
