@@ -12,6 +12,7 @@ export function BarCodeScanner() {
   const handleBarCodeScanned = ({ type, data }: BarcodeScanningResult) => {
     setScanned(true);
     setScannedData(data);
+    console.log(scannedData);
     alert(`Bar code with type ${type} and data ${data} has been scanned!`);
   };
 
