@@ -29,14 +29,24 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
       backgroundColor: "#1F104A",
     },
   },
-  // extra: {
-  //   eas: {
-  //     projectId: "your-eas-project-id",
-  //   },
-  // },
+  extra: {
+    eas: {
+      projectId: "3ccae792-fb6b-43aa-a3b7-0229b71670ad",
+    },
+  },
   experiments: {
     tsconfigPaths: true,
     typedRoutes: true,
   },
-  plugins: ["expo-router"],
+  plugins: [
+    "expo-router",
+    [
+      "expo-camera",
+      {
+        cameraPermission: `Allow ${process.env.CUSTOMER_FACCING_PRODUCT_NAME} to access your camera`,
+        microphonePermission: `Allow ${process.env.CUSTOMER_FACCING_PRODUCT_NAME} to access your microphone`,
+        recordAudioAndroid: true,
+      },
+    ],
+  ],
 });
