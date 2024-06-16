@@ -1,7 +1,9 @@
 import type { BarcodeScanningResult, CameraType } from "expo-camera";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button, Text, TouchableOpacity, View } from "react-native";
 import { CameraView, useCameraPermissions } from "expo-camera";
+
+import { api } from "~/utils/api";
 
 export function BarCodeScanner() {
   const [facing, setFacing] = useState<CameraType>("back");
@@ -9,20 +11,22 @@ export function BarCodeScanner() {
   const [scannedData, setScannedData] = useState<string | null>(null);
   const [scanned, setScanned] = useState(false);
 
-  const handleBarCodeScanned = ({ type, data }: BarcodeScanningResult) => {
+  const handleBarCodeScanned = (barCodeObject: BarcodeScanningResult) => {
     setScanned(true);
-    setScannedData(data);
-    console.log(scannedData);
-    alert(`Bar code with type ${type} and data ${data} has been scanned!`);
+    setScannedData(barCodeObject.data);
+
+    alert(data?.productRes.product.brands);
   };
 
+  const { data, error, isLoading } = api.getEstimate.getEstimate.useQuery({
+    barCodeUniqueId: scannedData || "",
+  });
+
   if (!permission) {
-    // Camera permissions are still loading.
     return <View />;
   }
 
   if (!permission.granted) {
-    // Camera permissions are not granted yet.
     return (
       <View className="flex flex-row rounded-lg bg-muted p-4">
         <Text className="text-center">
