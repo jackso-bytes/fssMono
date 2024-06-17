@@ -11,16 +11,18 @@ export function BarCodeScanner() {
   const [scannedData, setScannedData] = useState<string | null>(null);
   const [scanned, setScanned] = useState(false);
 
+  const { data, error, isLoading } = scannedData
+    ? api.getEstimate.getEstimate.useQuery({ barCodeUniqueId: scannedData })
+    : { data: null, error: null, isLoading: false };
+
   const handleBarCodeScanned = (barCodeObject: BarcodeScanningResult) => {
     setScanned(true);
     setScannedData(barCodeObject.data);
 
-    alert(data?.productRes.product.brands);
+    if (data) {
+      alert(data?.productRes.product.brands);
+    }
   };
-
-  const { data, error, isLoading } = api.getEstimate.getEstimate.useQuery({
-    barCodeUniqueId: scannedData || "",
-  });
 
   if (!permission) {
     return <View />;
