@@ -12,7 +12,6 @@ export const getEstimateRouter = {
       }),
     )
     .query(async ({ input }) => {
-      // Fetch data from the first API
       const productRes = await fetch(
         `${process.env.WORLD_OPEN_FOOD_FACTS_BASE_URL}/api/v0/product/${input.barCodeUniqueId}.json`,
       ).then((res) => res.json());
