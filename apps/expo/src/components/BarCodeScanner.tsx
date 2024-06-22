@@ -1,5 +1,5 @@
 import type { BarcodeScanningResult, CameraType } from "expo-camera";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Button, Text, TouchableOpacity, View } from "react-native";
 import { CameraView, useCameraPermissions } from "expo-camera";
 
@@ -11,18 +11,35 @@ export function BarCodeScanner() {
   const [scannedData, setScannedData] = useState<string | null>(null);
   const [scanned, setScanned] = useState(false);
 
-  const { data, error, isLoading } = scannedData
-    ? api.getEstimate.getEstimate.useQuery({ barCodeUniqueId: scannedData })
-    : { data: null, error: null, isLoading: false };
+  const { isError, data, error, refetch } =
+    api.getEstimate.getEstimate.useQuery(
+      { barCodeUniqueId: scannedData ?? "" },
+      {
+        enabled: !!scannedData,
+      },
+    );
 
-  const handleBarCodeScanned = (barCodeObject: BarcodeScanningResult) => {
+  const handleBarCodeScanned = async (barCodeObject: BarcodeScanningResult) => {
     setScanned(true);
     setScannedData(barCodeObject.data);
-
-    if (data) {
-      alert(data?.productRes.product.brands);
-    }
+    // manually call backend when we have data;
+    await refetch();
+    console.log(data);
   };
+
+  function toggleCameraFacing() {
+    setFacing((current) => (current === "back" ? "front" : "back"));
+  }
+
+  // break cases
+
+  if (isError) {
+    return (
+      <View>
+        <Text>Error: {error.message}</Text>
+      </View>
+    );
+  }
 
   if (!permission) {
     return <View />;
@@ -37,10 +54,6 @@ export function BarCodeScanner() {
         <Button onPress={requestPermission} title="grant permission" />
       </View>
     );
-  }
-
-  function toggleCameraFacing() {
-    setFacing((current) => (current === "back" ? "front" : "back"));
   }
 
   return (
