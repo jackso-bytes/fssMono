@@ -3,26 +3,49 @@ import { useState } from "react";
 import { Button, Text, TouchableOpacity, View } from "react-native";
 import { CameraView, useCameraPermissions } from "expo-camera";
 
+import { api } from "~/utils/api";
+
 export function BarCodeScanner() {
   const [facing, setFacing] = useState<CameraType>("back");
   const [permission, requestPermission] = useCameraPermissions();
   const [scannedData, setScannedData] = useState<string | null>(null);
   const [scanned, setScanned] = useState(false);
 
-  const handleBarCodeScanned = ({ type, data }: BarcodeScanningResult) => {
+  const { isError, data, error, refetch } =
+    api.getEstimate.getEstimate.useQuery(
+      { barCodeUniqueId: scannedData ?? "" },
+      {
+        enabled: !!scannedData,
+      },
+    );
+
+  const handleBarCodeScanned = async (barCodeObject: BarcodeScanningResult) => {
     setScanned(true);
-    setScannedData(data);
-    console.log(scannedData);
-    alert(`Bar code with type ${type} and data ${data} has been scanned!`);
+    setScannedData(barCodeObject.data);
+    // manually call backend when we have data;
+    await refetch();
+    console.log(data);
   };
 
+  function toggleCameraFacing() {
+    setFacing((current) => (current === "back" ? "front" : "back"));
+  }
+
+  // break cases
+
+  if (isError) {
+    return (
+      <View>
+        <Text>Error: {error.message}</Text>
+      </View>
+    );
+  }
+
   if (!permission) {
-    // Camera permissions are still loading.
     return <View />;
   }
 
   if (!permission.granted) {
-    // Camera permissions are not granted yet.
     return (
       <View className="flex flex-row rounded-lg bg-muted p-4">
         <Text className="text-center">
@@ -31,10 +54,6 @@ export function BarCodeScanner() {
         <Button onPress={requestPermission} title="grant permission" />
       </View>
     );
-  }
-
-  function toggleCameraFacing() {
-    setFacing((current) => (current === "back" ? "front" : "back"));
   }
 
   return (
