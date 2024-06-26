@@ -37,4 +37,5 @@ export interface EcoScoreData {
     score: number;
     version: string;
   };
+  grade: string;
 }

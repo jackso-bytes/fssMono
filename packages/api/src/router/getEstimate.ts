@@ -32,7 +32,7 @@ export const getEstimateRouter = {
             gptProductInfoJson: {
               carbonEstimate: 0,
               sustainability: 0,
-              seasonality: "We can't tell if this product is in season",
+              inSeason: "We can't tell if this product is in season",
             },
             WorldFoodFactsProductInfo,
           };
