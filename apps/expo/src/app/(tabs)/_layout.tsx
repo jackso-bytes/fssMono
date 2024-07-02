@@ -1,17 +1,44 @@
 import { Tabs } from "expo-router";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 
-// This is the main layout of the app
-// It wraps your pages with the providers they need
+const primaryColor = "#4caf50";
+const secondaryColor = "#ffffff";
+const focussedColor = "#a8ec6f";
+
 export default function TabLayout() {
   return (
-    <Tabs screenOptions={{ tabBarActiveTintColor: "blue" }}>
+    <Tabs
+      screenOptions={{
+        tabBarActiveTintColor: focussedColor,
+        tabBarInactiveTintColor: secondaryColor,
+        tabBarStyle: {
+          height: 65,
+          borderColor: secondaryColor,
+          borderTopColor: secondaryColor,
+          backgroundColor: primaryColor,
+        },
+        tabBarIconStyle: {
+          marginTop: 10,
+          color: secondaryColor,
+        },
+        tabBarLabelStyle: {
+          fontSize: 12,
+          color: secondaryColor,
+          fontWeight: "medium",
+          marginBottom: 10,
+        },
+      }}
+    >
       <Tabs.Screen
         name="index"
         options={{
           title: "Home",
-          tabBarIcon: ({ color }) => (
-            <FontAwesome size={28} name="home" color={color} />
+          tabBarIcon: ({ color, focused }) => (
+            <FontAwesome
+              size={28}
+              name="home"
+              color={focused ? focussedColor : color}
+            />
           ),
         }}
       />
@@ -19,17 +46,26 @@ export default function TabLayout() {
         name="about"
         options={{
           title: "About",
-          tabBarIcon: ({ color }) => (
-            <FontAwesome size={28} name="cog" color={color} />
+          tabBarIcon: ({ color, focused }) => (
+            <FontAwesome
+              size={28}
+              name="info-circle"
+              color={focused ? focussedColor : color}
+            />
           ),
         }}
       />
       <Tabs.Screen
         name="summary"
         options={{
-          title: "CO2 Summary",
-          tabBarIcon: ({ color }) => (
-            <FontAwesome size={28} name="bar-chart" color={color} />
+          title: "Summary",
+
+          tabBarIcon: ({ color, focused }) => (
+            <FontAwesome
+              size={28}
+              name="bar-chart"
+              color={focused ? focussedColor : color}
+            />
           ),
         }}
       />
