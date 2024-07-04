@@ -1,44 +1,44 @@
+import React from "react";
 import { Tabs } from "expo-router";
-import FontAwesome from "@expo/vector-icons/FontAwesome";
+import { BarChart3, House, Info } from "lucide-react-native";
 
-const primaryColor = "#4caf50";
-const secondaryColor = "#ffffff";
-const focussedColor = "#a8ec6f";
+import Header from "~/components/Header";
+
+const primary = "#4caf50";
+const secondary = "#ffffff";
+const tertiary = "#008134";
 
 export default function TabLayout() {
   return (
     <Tabs
-      screenOptions={{
-        tabBarActiveTintColor: focussedColor,
-        tabBarInactiveTintColor: secondaryColor,
+      screenOptions={() => ({
+        tabBarActiveTintColor: tertiary,
+        tabBarInactiveTintColor: secondary,
         tabBarStyle: {
-          height: 65,
-          borderColor: secondaryColor,
-          borderTopColor: secondaryColor,
-          backgroundColor: primaryColor,
+          height: 64,
+          borderColor: secondary,
+          borderTopColor: secondary,
+          backgroundColor: primary,
         },
         tabBarIconStyle: {
-          marginTop: 10,
-          color: secondaryColor,
+          marginTop: 8,
+          color: secondary,
         },
         tabBarLabelStyle: {
           fontSize: 12,
-          color: secondaryColor,
+          color: secondary,
           fontWeight: "medium",
-          marginBottom: 10,
+          marginBottom: 8,
         },
-      }}
+        header: () => <Header />,
+      })}
     >
       <Tabs.Screen
         name="index"
         options={{
           title: "Home",
           tabBarIcon: ({ color, focused }) => (
-            <FontAwesome
-              size={28}
-              name="home"
-              color={focused ? focussedColor : color}
-            />
+            <House size={28} color={focused ? tertiary : color} />
           ),
         }}
       />
@@ -47,11 +47,7 @@ export default function TabLayout() {
         options={{
           title: "About",
           tabBarIcon: ({ color, focused }) => (
-            <FontAwesome
-              size={28}
-              name="info-circle"
-              color={focused ? focussedColor : color}
-            />
+            <Info size={28} color={focused ? tertiary : color} />
           ),
         }}
       />
@@ -59,13 +55,8 @@ export default function TabLayout() {
         name="summary"
         options={{
           title: "Summary",
-
           tabBarIcon: ({ color, focused }) => (
-            <FontAwesome
-              size={28}
-              name="bar-chart"
-              color={focused ? focussedColor : color}
-            />
+            <BarChart3 size={28} color={focused ? tertiary : color} />
           ),
         }}
       />
