@@ -11,6 +11,8 @@ export interface WorldFoodFactsProductInfo {
   };
 }
 
+export type GradeType = "a" | "b" | "c" | "d" | "e" | undefined;
+
 export interface EcoScoreData {
   score: number;
   agribalyse: {
@@ -37,5 +39,5 @@ export interface EcoScoreData {
     score: number;
     version: string;
   };
-  grade: string;
+  grade: GradeType;
 }

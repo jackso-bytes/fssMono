@@ -1,8 +1,10 @@
 import type { BarcodeScanningResult, CameraType } from "expo-camera";
 import { useState } from "react";
-import { Button, Text, TouchableOpacity, View } from "react-native";
+import { Button, Pressable, Text, TouchableOpacity, View } from "react-native";
 import { CameraView, useCameraPermissions } from "expo-camera";
+import { Link } from "expo-router";
 
+import EcoScoreIcon from "~/components/icons/EcoScoreIcon";
 import { api } from "~/utils/api";
 
 export function BarCodeScanner() {
@@ -31,16 +33,16 @@ export function BarCodeScanner() {
   }
 
   const productName =
-    data?.WorldFoodFactsProductInfo?.product?.product_name ??
+    data?.WorldFoodFactsProductInfo?.product.product_name ??
     "Sorry, we couldn't find that product";
   const productGrade =
-    data?.WorldFoodFactsProductInfo?.product?.ecoscore_data?.grade?.toUpperCase() ??
-    "Sorry, we couldn't find a grade for that";
+    data?.WorldFoodFactsProductInfo?.product.ecoscore_data?.grade;
   const productTotalCO2: string | number =
-    data?.WorldFoodFactsProductInfo?.product?.ecoscore_data?.agribalyse
-      ?.co2_total || "Sorry, we couldn't find the total CO2";
+    data?.WorldFoodFactsProductInfo?.product.ecoscore_data?.agribalyse
+      .co2_total ?? "Sorry, we couldn't find the total CO2";
 
-  // break cases
+  const productGradeGood =
+    productGrade === "a" || productGrade === "b" || productGrade === "c";
 
   if (isError) {
     return (
@@ -68,39 +70,70 @@ export function BarCodeScanner() {
   return (
     <>
       {data && scanned ? (
-        <View>
-          <Button
-            title={"Tap to Scan Again"}
-            onPress={() => setScanned(false)}
-          />
-          <Text>{productName}</Text>
-          <Text>Grade: {productGrade}</Text>
-          <Text>Total CO2: {productTotalCO2} g CO2e</Text>
+        <View className="flex-col justify-center">
+          <Text className="mb-4 mt-4 text-left text-3xl font-bold">
+            {productName}
+          </Text>
+          {productGrade ? (
+            <EcoScoreIcon grade={productGrade} />
+          ) : (
+            <Text>"Sorry we can't seem to find that item "</Text>
+          )}
+          <Text className="mb-4 mt-4">
+            The EcoScore for this product is an {productGrade?.toUpperCase()}{" "}
+            {productGradeGood ? "🎉" : "😞"}
+          </Text>
+          <Text className="mb-4 text-3xl font-bold">Total CO2 </Text>
+          <Text>
+            this product produces{" "}
+            <Text className="font-bold">{productTotalCO2} g CO2e</Text>
+          </Text>
+          <Text className="mb-4">
+            That's equivalent to driving a car for 5 miles...
+          </Text>
+          <Text className="mb-4 text-3xl font-bold">Seasonality </Text>
+          <Text>Sorry, we can't tell if this product is in season for you</Text>
+          <View className="">
+            <Button
+              title={"Tap to Scan Another Product"}
+              onPress={() => setScanned(false)}
+              color="green"
+            />
+          </View>
         </View>
       ) : (
-        <View className="flex flex-row justify-center rounded-lg bg-muted p-8">
-          {scanned && (
-            <Button
-              title={"Tap to Scan Again"}
-              onPress={() => setScanned(false)}
-            />
-          )}
-          <CameraView
-            className="flex-1"
-            facing={facing}
-            onBarcodeScanned={scanned ? undefined : handleBarCodeScanned}
-          >
-            <View className="m-44 flex-1 flex-row bg-transparent ">
-              <TouchableOpacity
-                className="flex-1 items-center self-center"
-                onPress={toggleCameraFacing}
-              >
-                <Text className="size-24 font-bold text-white">
-                  Flip Camera
-                </Text>
-              </TouchableOpacity>
-            </View>
-          </CameraView>
+        <View>
+          <Text className="text-center text-5xl font-bold text-foreground">
+            Fresh <Text className="text-primary">Seasonal</Text> Sustainable
+          </Text>
+
+          <Text className="text-8 mb-2 mt-4">
+            Scan a barcode to get a CO2 estimate for that food product.
+          </Text>
+          <View className="flex flex-col justify-center rounded-lg bg-muted p-8">
+            {scanned && (
+              <Button
+                title={"Tap to Scan Again"}
+                onPress={() => setScanned(false)}
+              />
+            )}
+            <CameraView
+              className="flex-1"
+              facing={facing}
+              onBarcodeScanned={scanned ? undefined : handleBarCodeScanned}
+            >
+              <View className="m-44 flex-1 flex-row bg-transparent ">
+                <TouchableOpacity
+                  className="flex-1 items-center self-center"
+                  onPress={toggleCameraFacing}
+                >
+                  <Text className="size-24 font-bold text-white">
+                    Flip Camera
+                  </Text>
+                </TouchableOpacity>
+              </View>
+            </CameraView>
+          </View>
         </View>
       )}
     </>
