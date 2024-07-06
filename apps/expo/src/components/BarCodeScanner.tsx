@@ -1,8 +1,7 @@
 import type { BarcodeScanningResult, CameraType } from "expo-camera";
 import { useState } from "react";
-import { Button, Pressable, Text, TouchableOpacity, View } from "react-native";
+import { Button, Text, TouchableOpacity, View } from "react-native";
 import { CameraView, useCameraPermissions } from "expo-camera";
-import { Link } from "expo-router";
 
 import EcoScoreIcon from "~/components/icons/EcoScoreIcon";
 import { api } from "~/utils/api";
