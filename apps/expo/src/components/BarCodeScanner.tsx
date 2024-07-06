@@ -69,10 +69,8 @@ export function BarCodeScanner() {
   return (
     <>
       {data && scanned ? (
-        <View className="flex-col justify-center">
-          <Text className="mb-4 mt-4 text-left text-3xl font-bold">
-            {productName}
-          </Text>
+        <View className="relative h-full flex-col justify-start">
+          <Text className="mb-4 text-3xl font-bold">{productName}</Text>
           {productGrade ? (
             <EcoScoreIcon grade={productGrade} />
           ) : (
@@ -82,7 +80,7 @@ export function BarCodeScanner() {
             The EcoScore for this product is an {productGrade?.toUpperCase()}{" "}
             {productGradeGood ? "🎉" : "😞"}
           </Text>
-          <Text className="mb-4 text-3xl font-bold">Total CO2 </Text>
+          <Text className="mb-4 text-3xl font-bold">Total CO2</Text>
           <Text>
             this product produces{" "}
             <Text className="font-bold">{productTotalCO2} g CO2e</Text>
@@ -92,7 +90,7 @@ export function BarCodeScanner() {
           </Text>
           <Text className="mb-4 text-3xl font-bold">Seasonality </Text>
           <Text>Sorry, we can't tell if this product is in season for you</Text>
-          <View className="">
+          <View className="flex-start absolute bottom-0 flex-row">
             <Button
               title={"Tap to Scan Another Product"}
               onPress={() => setScanned(false)}
@@ -112,7 +110,7 @@ export function BarCodeScanner() {
           <View className="flex flex-col justify-center rounded-lg bg-muted p-8">
             {scanned && (
               <Button
-                title={"Tap to Scan Again"}
+                title={"Tap to Scan Another Product"}
                 onPress={() => setScanned(false)}
               />
             )}
