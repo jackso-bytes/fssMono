@@ -1,11 +1,11 @@
 import { View } from "react-native";
 
-import BarCodeScanner from "~/components/BarCodeScanner";
+import HomePage from "~/components/HomePage";
 
 export default function Index() {
   return (
     <View className="h-full w-full bg-background p-4">
-      <BarCodeScanner />
+      <HomePage />
     </View>
   );
 }
