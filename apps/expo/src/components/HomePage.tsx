@@ -6,7 +6,7 @@ import { CameraView, useCameraPermissions } from "expo-camera";
 import EcoScoreIcon from "~/components/icons/EcoScoreIcon";
 import { api } from "~/utils/api";
 
-export function BarCodeScanner() {
+export function HomePage() {
   const [facing, setFacing] = useState<CameraType>("back");
   const [permission, requestPermission] = useCameraPermissions();
   const [scannedData, setScannedData] = useState<string | null>(null);
@@ -137,4 +137,4 @@ export function BarCodeScanner() {
   );
 }
 
-export default BarCodeScanner;
+export default HomePage;
