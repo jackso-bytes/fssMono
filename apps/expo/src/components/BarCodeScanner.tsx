@@ -90,7 +90,7 @@ export function BarCodeScanner() {
           </Text>
           <Text className="mb-4 text-3xl font-bold">Seasonality </Text>
           <Text>Sorry, we can't tell if this product is in season for you</Text>
-          <View className="flex-start absolute bottom-0 flex-row">
+          <View className="absolute bottom-0 ml-0 w-full flex-row justify-center">
             <Button
               title={"Tap to Scan Another Product"}
               onPress={() => setScanned(false)}
