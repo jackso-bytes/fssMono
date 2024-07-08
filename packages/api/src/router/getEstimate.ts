@@ -31,13 +31,12 @@ export const getEstimateRouter = {
           return {
             gptProductInfoJson: {
               carbonEstimate: 0,
-              sustainability: 0,
               inSeason: "We can't tell if this product is in season",
             },
             WorldFoodFactsProductInfo,
           };
 
-        const prompt = `Provide an estimated carbon footprint, sustainability score, and seasonal availability for the following food product:\n\nProduct: ${WorldFoodFactsProductInfo.product.product_name}\n\nOutput the result in the following JSON format:\n{\n  "carbonEstimate": <estimated_carbon_footprint_per_kg>,\n  "sustainability": <sustainability_score_out_of_10>,\n  "inSeason": "<season_months>"\n}`;
+        const prompt = `Provide an estimated carbon footprint, sustainability score, and seasonal availability for the following food product:\n\nProduct: ${WorldFoodFactsProductInfo.product.product_name}\n\nOutput the result in the following JSON format:\n{\n  "carbonEstimate": <estimated_carbon_footprint_per_kg>,\n "inSeason": "<season_months>"\n}`;
 
         const gptResponse: ChatCompletion =
           await openai.chat.completions.create({

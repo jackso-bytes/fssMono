@@ -1,6 +1,5 @@
 export interface GptProductInfoJson {
   carbonEstimate: number;
-  sustainability: number;
   inSeason: string;
 }
 
