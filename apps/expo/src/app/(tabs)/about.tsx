@@ -9,26 +9,25 @@ const handleOpenURL = () => {
 export const About = () => {
   return (
     <View className="h-full w-full p-4">
-      <Text className="mb-4 text-3xl font-bold">
-        What is Fresh Seasonal Sustainable?1
+      <Text className="mb-4 text-2xl font-bold">
+        What is Fresh Seasonal Sustainable?
       </Text>
-      <Text>
+      <Text className="text mb-4">
         FSS is an app designed to help you make eco-friendly food choices by
-        providing detailed information on the carbon footprint of various food
-        items.
+        providing the carbon footprint of various food items.
       </Text>
-      <Image source={require("../../assets/avo-bowl.png")} className="w-full" />
-      <Text className="mb-4 text-3xl font-bold">
-        How We Calculate CO2 Estimates
-      </Text>
-      <Text>
+      <Image
+        source={require("../../../assets/world.jpg")}
+        className="mb-4 w-full"
+      />
+      <Text className="mb-4">
         We use World Open Food Facts to provide CO2 estimates for each food
-        item. If you want to read more about how they calculate the estimates
-        please use the link below.
+        item.
       </Text>
-      <Image source={require("../../assets/world.jpg")} className="w-full" />
       <TouchableOpacity onPress={handleOpenURL}>
-        <Text>Open https://world.openfoodfacts.org</Text>
+        <Text className="text-lg text-primary underline">
+          Learn more about World Open Food Facts
+        </Text>
       </TouchableOpacity>
     </View>
   );
