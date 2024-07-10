@@ -1,5 +1,7 @@
 import { Image, Linking, Text, TouchableOpacity, View } from "react-native";
 
+import WorldImage from "../../../assets/world.jpg";
+
 const handleOpenURL = () => {
   Linking.openURL("https://world.openfoodfacts.org").catch((err) =>
     console.error("Failed to open URL:https://world.openfoodfacts.org", err),
@@ -16,10 +18,7 @@ export const About = () => {
         FSS is an app designed to help you make eco-friendly food choices by
         providing the carbon footprint of various food items.
       </Text>
-      <Image
-        source={require("../../../assets/world.jpg")}
-        className="mb-4 w-full"
-      />
+      <Image source={WorldImage} className="mb-4 w-full" />
       <Text className="mb-4">
         We use World Open Food Facts to provide CO2 estimates for each food
         item.
