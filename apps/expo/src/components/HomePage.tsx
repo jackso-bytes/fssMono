@@ -57,7 +57,7 @@ export function HomePage() {
 
   if (!permission.granted) {
     return (
-      <View className="flex flex-row rounded-lg bg-muted p-4">
+      <View className="bg-muted flex flex-row rounded-lg p-4">
         <Text className="text-center">
           We need your permission to show the camera
         </Text>
@@ -100,14 +100,14 @@ export function HomePage() {
         </View>
       ) : (
         <View>
-          <Text className="text-center text-5xl font-bold text-foreground">
+          <Text className="text-foreground text-center text-5xl font-bold">
             Fresh <Text className="text-primary">Seasonal</Text> Sustainable
           </Text>
 
           <Text className="text-8 mb-2 mt-4">
             Scan a barcode to get a CO2 estimate for that food product.
           </Text>
-          <View className="flex flex-col justify-center rounded-lg bg-muted p-8">
+          <View className="bg-muted flex flex-col justify-center rounded-lg p-8">
             {scanned && (
               <Button
                 title={"Tap to Scan Another Product"}
