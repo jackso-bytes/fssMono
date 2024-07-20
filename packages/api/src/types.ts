@@ -1,6 +1,5 @@
 export interface GptProductInfoJson {
   carbonEstimate: number;
-  sustainability: number;
   inSeason: string;
 }
 
@@ -10,6 +9,8 @@ export interface WorldFoodFactsProductInfo {
     ecoscore_data?: EcoScoreData;
   };
 }
+
+export type GradeType = "a" | "b" | "c" | "d" | "e" | undefined;
 
 export interface EcoScoreData {
   score: number;
@@ -37,4 +38,5 @@ export interface EcoScoreData {
     score: number;
     version: string;
   };
+  grade: GradeType;
 }
