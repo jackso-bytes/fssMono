@@ -35,6 +35,15 @@ function withMonorepoPaths(config) {
     path.resolve(workspaceRoot, "node_modules"),
   ];
 
+  // Configure Metro to handle SVG files
+  const { assetExts, sourceExts } = config.resolver;
+  config.resolver.assetExts = assetExts.filter((ext) => ext !== "svg");
+  config.resolver.sourceExts = [...sourceExts, "svg"];
+
+  config.transformer.babelTransformerPath = require.resolve(
+    "react-native-svg-transformer",
+  );
+
   return config;
 }
 
