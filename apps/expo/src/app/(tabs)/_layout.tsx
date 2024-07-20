@@ -51,15 +51,6 @@ export default function TabLayout() {
           ),
         }}
       />
-      <Tabs.Screen
-        name="summary"
-        options={{
-          title: "Summary",
-          tabBarIcon: ({ color, focused }) => (
-            <BarChart3 size={28} color={focused ? tertiary : color} />
-          ),
-        }}
-      />
     </Tabs>
   );
 }
