@@ -1,6 +1,6 @@
 import React from "react";
 import { Tabs } from "expo-router";
-import { BarChart3, House, Info } from "lucide-react-native";
+import { House, Info } from "lucide-react-native";
 
 import Header from "~/components/Header";
 
