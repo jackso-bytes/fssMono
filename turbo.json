@@ -17,6 +17,10 @@
         ".vercel/output/**"
       ]
     },
+    "build:backend": {
+      "dependsOn": ["^topo"],
+      "outputs": [".output/**", ".vercel/output/**"]
+    },
     "dev": {
       "persistent": true,
       "cache": false
