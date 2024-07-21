@@ -1,7 +1,7 @@
-import { authRouter } from "./router/auth";
-import { getEstimateRouter } from "./router/getEstimate";
-import { postRouter } from "./router/post";
-import { createTRPCRouter } from "./trpc";
+import { authRouter } from "./router/auth.js";
+import { getEstimateRouter } from "./router/getEstimate.js";
+import { postRouter } from "./router/post.js";
+import { createTRPCRouter } from "./trpc.js";
 
 export const appRouter = createTRPCRouter({
   auth: authRouter,
