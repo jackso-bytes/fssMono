@@ -5,7 +5,7 @@ import OpenAI from "openai";
 import { z } from "zod";
 
 import type { GptProductInfoJson, WorldFoodFactsProductInfo } from "../types";
-import { publicProcedure } from "../../dist/trpc.js";
+import { publicProcedure } from "../trpc.js";
 
 export const getEstimateRouter = {
   getEstimate: publicProcedure

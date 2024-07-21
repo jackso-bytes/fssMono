@@ -1,7 +1,7 @@
-import { authRouter } from "../dist/router/auth.js";
-import { getEstimateRouter } from "../dist/router/getEstimate.js";
-import { postRouter } from "../dist/router/post.js";
-import { createTRPCRouter } from "../dist/trpc.js";
+import { authRouter } from "./router/auth.js";
+import { getEstimateRouter } from "./router/getEstimate.js";
+import { postRouter } from "./router/post.js";
+import { createTRPCRouter } from "./trpc.js";
 
 export const appRouter = createTRPCRouter({
   auth: authRouter,
