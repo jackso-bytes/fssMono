@@ -18,8 +18,14 @@
       ]
     },
     "build:backend": {
-      "dependsOn": ["^topo"],
-      "outputs": [".output/**", ".vercel/output/**"]
+      "dependsOn": ["^build:backend"],
+      "outputs": [
+        ".next/**",
+        "!.next/cache/**",
+        "next-env.d.ts",
+        ".output/**",
+        ".vercel/output/**"
+      ]
     },
     "dev": {
       "persistent": true,
