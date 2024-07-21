@@ -1,8 +1,8 @@
 import type { inferRouterInputs, inferRouterOutputs } from "@trpc/server";
 
-import type { AppRouter } from "./root.js";
-import { appRouter } from "./root.js";
-import { createCallerFactory, createTRPCContext } from "./trpc.js";
+import type { AppRouter } from "../dist/root.js";
+import { appRouter } from "../dist/root.js";
+import { createCallerFactory, createTRPCContext } from "../dist/trpc.js";
 
 /**
  * Create a server-side caller for the tRPC API
