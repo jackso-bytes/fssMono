@@ -4,7 +4,7 @@ import { z } from "zod";
 import { desc, eq } from "@acme/db";
 import { CreatePostSchema, Post } from "@acme/db/schema";
 
-import { protectedProcedure, publicProcedure } from "../trpc.js";
+import { protectedProcedure, publicProcedure } from "../trpc";
 
 export const postRouter = {
   all: publicProcedure.query(({ ctx }) => {
