@@ -3,7 +3,7 @@ import { Image, Text, View } from "react-native";
 
 import FssLogoCircle from "../../assets/fssCircle.png";
 
-const Header = () => {
+export const Header = () => {
   return (
     <View className="h-16 w-full flex-row items-center justify-start bg-primary pl-2">
       <Image source={FssLogoCircle} className="h-12 w-12" />
