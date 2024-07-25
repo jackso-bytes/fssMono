@@ -1,6 +1,6 @@
 import React from "react";
 import { Tabs } from "expo-router";
-import { BarChart3, House, Info } from "lucide-react-native";
+import { House, Info } from "lucide-react-native";
 
 import Header from "~/components/Header";
 
@@ -48,15 +48,6 @@ export default function TabLayout() {
           title: "About",
           tabBarIcon: ({ color, focused }) => (
             <Info size={28} color={focused ? tertiary : color} />
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name="summary"
-        options={{
-          title: "Summary",
-          tabBarIcon: ({ color, focused }) => (
-            <BarChart3 size={28} color={focused ? tertiary : color} />
           ),
         }}
       />
