@@ -4,15 +4,16 @@ import { Button, Text, TouchableOpacity, View } from "react-native";
 import { CameraView, useCameraPermissions } from "expo-camera";
 
 import EcoScoreIcon from "~/components/icons/EcoScoreIcon";
+import Loading from "~/components/Loading";
 import { api } from "~/utils/api";
 
-export function HomePage() {
+export const HomePage = () => {
   const [facing, setFacing] = useState<CameraType>("back");
   const [permission, requestPermission] = useCameraPermissions();
   const [scannedData, setScannedData] = useState<string | null>(null);
   const [scanned, setScanned] = useState(false);
 
-  const { isError, data, error, refetch } =
+  const { isError, isLoading, data, error, isFetched, refetch } =
     api.getEstimate.getEstimate.useQuery(
       { barCodeUniqueId: scannedData ?? "" },
       {
@@ -31,9 +32,7 @@ export function HomePage() {
     setFacing((current) => (current === "back" ? "front" : "back"));
   }
 
-  const productName =
-    data?.WorldFoodFactsProductInfo?.product.product_name ??
-    "Sorry, we couldn't find that product";
+  const productName = data?.WorldFoodFactsProductInfo?.product.product_name;
   const productGrade =
     data?.WorldFoodFactsProductInfo?.product.ecoscore_data?.grade;
   const productTotalCO2: string | number =
@@ -51,8 +50,31 @@ export function HomePage() {
     );
   }
 
+  if (isLoading) {
+    return <Loading />;
+  }
+
+  if (scanned && isFetched && !productName) {
+    return (
+      <View>
+        <Text>Sorry! We couldn't find that product.</Text>
+        <View className="ml-0 w-full flex-row justify-center">
+          <Button
+            title={"Tap to Scan Another Product"}
+            onPress={() => setScanned(false)}
+            color="green"
+          />
+        </View>
+      </View>
+    );
+  }
+
   if (!permission) {
-    return <View />;
+    return (
+      <View>
+        <Text>Sorry! We need camera permissions to scan products.</Text>
+      </View>
+    );
   }
 
   if (!permission.granted) {
@@ -68,13 +90,13 @@ export function HomePage() {
 
   return (
     <>
-      {data && scanned ? (
+      {isFetched && scanned ? (
         <View className="relative h-full flex-col justify-start">
           <Text className="mb-4 text-3xl font-bold">{productName}</Text>
           {productGrade ? (
             <EcoScoreIcon grade={productGrade} />
           ) : (
-            <Text>"Sorry we can't seem to find that item "</Text>
+            <Text>"Sorry! We can't find the grade for that product."</Text>
           )}
           <Text className="mb-4 mt-4">
             The EcoScore for this product is an {productGrade?.toUpperCase()}{" "}
@@ -89,7 +111,9 @@ export function HomePage() {
             That's equivalent to driving a car for 5 miles...
           </Text>
           <Text className="mb-4 text-3xl font-bold">Seasonality </Text>
-          <Text>Sorry, we can't tell if this product is in season for you</Text>
+          <Text>
+            Sorry, we can't tell if this product is in season for you.
+          </Text>
           <View className="absolute bottom-0 ml-0 w-full flex-row justify-center">
             <Button
               title={"Tap to Scan Another Product"}
@@ -135,6 +159,6 @@ export function HomePage() {
       )}
     </>
   );
-}
+};
 
 export default HomePage;
