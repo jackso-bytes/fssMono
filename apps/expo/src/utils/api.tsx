@@ -31,9 +31,6 @@ const getBaseUrl = () => {
 
   if (!localhost) {
     return "https://fssmono.onrender.com";
-    throw new Error(
-      "Failed to get localhost. Please point to your production server.",
-    );
   }
   return `http://${localhost}:3000`;
 };
