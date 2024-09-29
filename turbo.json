@@ -17,6 +17,16 @@
         ".vercel/output/**"
       ]
     },
+    "build:backend": {
+      "dependsOn": ["^build:backend"],
+      "outputs": [
+        ".next/**",
+        "!.next/cache/**",
+        "next-env.d.ts",
+        ".output/**",
+        ".vercel/output/**"
+      ]
+    },
     "dev": {
       "persistent": true,
       "cache": false

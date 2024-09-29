@@ -2,7 +2,7 @@ import type { ConfigContext, ExpoConfig } from "expo/config";
 
 export default ({ config }: ConfigContext): ExpoConfig => ({
   ...config,
-  name: "expo",
+  name: "Fresh Seasonal Sustainable",
   slug: "expo",
   scheme: "expo",
   version: "0.1.0",
@@ -19,11 +19,11 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   },
   assetBundlePatterns: ["**/*"],
   ios: {
-    bundleIdentifier: "your.bundle.identifier",
+    bundleIdentifier: "fss.bundle.co2",
     supportsTablet: true,
   },
   android: {
-    package: "your.bundle.identifier",
+    package: "fss.bundle.co2",
     adaptiveIcon: {
       foregroundImage: "./assets/fss.png",
       backgroundColor: "#ffffff",
@@ -43,8 +43,8 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     [
       "expo-camera",
       {
-        cameraPermission: `Allow ${process.env.CUSTOMER_FACCING_PRODUCT_NAME} to access your camera`,
-        microphonePermission: `Allow ${process.env.CUSTOMER_FACCING_PRODUCT_NAME} to access your microphone`,
+        cameraPermission: `Allow ${process.env.CUSTOMER_FACING_PRODUCT_NAME} to access your camera`,
+        microphonePermission: `Allow ${process.env.CUSTOMER_FACING_PRODUCT_NAME} to access your microphone`,
         recordAudioAndroid: true,
       },
     ],

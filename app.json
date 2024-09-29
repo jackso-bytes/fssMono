@@ -6,10 +6,10 @@
       }
     },
     "android": {
-      "package": "com.fss"
+      "package": "fss.bundle.co2"
     },
     "ios": {
-      "bundleIdentifier": "com.fss"
+      "bundleIdentifier": "fss.bundle.co2"
     }
   }
 }

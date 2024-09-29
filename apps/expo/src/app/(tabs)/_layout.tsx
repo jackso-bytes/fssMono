@@ -1,4 +1,5 @@
 import React from "react";
+import { Dimensions, StyleSheet } from "react-native";
 import { Tabs } from "expo-router";
 import { House, Info } from "lucide-react-native";
 
@@ -8,6 +9,11 @@ const primary = "#4caf50";
 const secondary = "#ffffff";
 const tertiary = "#008134";
 
+const { width, height } = Dimensions.get("window");
+
+const tabBarHeight = height > 700 ? 64 : 56;
+const tabBarFontSize = width > 350 ? 12 : 10;
+
 export default function TabLayout() {
   return (
     <Tabs
@@ -15,21 +21,25 @@ export default function TabLayout() {
         tabBarActiveTintColor: tertiary,
         tabBarInactiveTintColor: secondary,
         tabBarStyle: {
-          height: 64,
+          position: "relative",
+          height: tabBarHeight,
           borderColor: secondary,
-          borderTopColor: secondary,
           backgroundColor: primary,
+          borderTopColor: secondary,
         },
         tabBarIconStyle: {
-          marginTop: 8,
+          position: "absolute",
+          top: 25,
           color: secondary,
         },
         tabBarLabelStyle: {
-          fontSize: 12,
+          position: "absolute",
+          top: 40,
+          fontSize: tabBarFontSize,
           color: secondary,
           fontWeight: "medium",
-          marginBottom: 8,
         },
+        tabBarAccessibilityLabel: "hello world",
         header: () => <Header />,
       })}
     >
